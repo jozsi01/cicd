@@ -7,6 +7,7 @@ jobs:
     steps:
       - name: Install check and pkg-config
         run: |
+          sudo apt-get update
           sudo apt install check pkg-config
       - name: Check out repository code
         uses: actions/checkout@v4
