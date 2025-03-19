@@ -13,12 +13,12 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt install -y build-essential check pkg-config gcc libpthread-stubs0-dev glibc-thread-db
+          sudo apt install -y check pkg-config gcc libpthread-stubs0-dev
 
       - name: Build with Check
         run: |
-          gcc -pthread operations.c check_operations.c -o check_operations \
-          `pkg-config --cflags --libs check`
+          gcc operations.c check_operations.c -o check_operations \
+          `pkg-config --cflags --libs check` -pthread -lpthread
 
       - name: Run Unit Tests
         run: ./check_operations
@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Application
-        run: gcc -pthread operations.c simplecalculator.c -o simplecalculator
+        run: gcc operations.c simplecalculator.c -o simplecalculator -pthread -lpthread
 
       - name: Create tar.gz Archive
         run: tar -czvf simplecalculator.tar.gz simplecalculator
