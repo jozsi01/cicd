@@ -53,7 +53,7 @@ jobs:
       - name: Create tar.gz Archive
         run: | 
           echo "EJBDVG" > neptun.txt
-          tar -czvf simplecalculator.tar.gz simplecalculator neptun 
+          tar -czvf simplecalculator.tar.gz simplecalculator neptun.txt 
 
       - name: Release Artifact
         uses: marvinpinto/action-automatic-releases@latest
